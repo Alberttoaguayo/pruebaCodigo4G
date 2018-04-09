@@ -16,7 +16,12 @@ void main (void){
 #ifdef __DEBUG_SERIAL__ //Deberiamos de proteger nuestras depuraciones de esta forma o usar una macro ya protegida.
    printf("Hola Mundo\n");//Puedes usar putc o printf. Revisa la documentación de CCS para ver que mas puedes hacer.
 #endif
+   comtadorAnillo=0x80;
    while(1){
-      
+      output_b(contadorAnillo);
+      comtadorAnillo=contadorAnillo >> 1;
+      if (contadorAnillo==0){
+	      contadorAnillo=0x80;
+      }
    }
 }	
